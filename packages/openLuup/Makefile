@@ -18,6 +18,7 @@ define Package/openLuup
 	SECTION:=hvac
 	CATEGORY:=Home automation
 	TITLE:=openLuup
+	PKGARCH:=all
 	MAINTAINER:=sam_
 	DEPENDS:=+luafilesystem +luasec +dkjson
 endef
