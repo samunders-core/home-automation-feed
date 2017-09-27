@@ -53,7 +53,7 @@ endef
 define Package/openLuup/postinst
 #!/bin/sh
 echo "Installing UI..."
-cd $(1)/usr/lib/$(PKG_NAME) && lua $(PKG_NAME)/init.lua altui
+cd $(1)/usr/lib/$(PKG_NAME) && lua $(PKG_NAME)/init.lua altui || true
 endef
 
 $(eval $(call BuildPackage,openLuup))
