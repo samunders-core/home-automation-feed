@@ -1,0 +1,16 @@
+#!/bin/sh /etc/rc.common
+
+USE_PROCD=1
+START=99
+STOP=10
+DIR=/usr/lib/openLuup
+BIN=openLuup/init.lua
+PORT=`awk '-F[ "]+' '/local s = server.start/{print $6}' $DIR/$BIN`
+
+start_service() {
+  procd_open_instance openLuup
+  procd_set_param command /bin/sh -c "cd $DIR && exec /usr/bin/lua $BIN"
+  procd_set_param respawn
+  procd_close_instance
+  echo "Starting openLuup at http://$(uci get network.lan.ipaddr):$PORT" 1>&2
+}
